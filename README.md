@@ -36,3 +36,4 @@ npm run dev
 ```sh
 npm run build
 ```
+https://www.figma.com/design/ZqQFqV0kP5gu1GSoSJVRDc/Login-Page--Community-?node-id=1-18&p=f&t=H9B5T69rB2mA1Okb-0
