@@ -1,0 +1,34 @@
+$primary-color: #D4D7E3;
+$accent-color: #0C1421;
+$primary-btn: #F3F9FA;
+$accent-btn: #162D3A;
+$main-font-size: '16px';
+
+@mixin font-size-mix() {
+  @media only screen and (max-width: 1240px) {
+    font-size: 14px;
+  }
+  @media only screen and (min-width: 1240px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+}
+button {
+  cursor: pointer;
+}
+@font-face {
+    font-family: "Roboto", sans-serif;
+    src: url('../fonts/Roboto.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+#app {
+    font-family: 'Roboto', sans-serif !important;
+}
