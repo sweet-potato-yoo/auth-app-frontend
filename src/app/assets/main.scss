@@ -4,6 +4,9 @@ $primary-btn: #F3F9FA;
 $accent-btn: #162D3A;
 $main-font-size: '16px';
 
+$white: #fff;
+$black: #000;
+
 @mixin font-size-mix() {
   @media only screen and (max-width: 1240px) {
     font-size: 14px;
