@@ -2,28 +2,37 @@
 import InputText from '@/shared/ui/InputText.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
 const router = useRouter();
+const store = useStore();
+
 const email = ref<string>('');
 const password = ref<string>('');
+const error = ref<string | null>(null);
 
-const onSign = async () => {
+const onSign = () => {
     const formData = new URLSearchParams();
     formData.append('username', email.value);
     formData.append('password', password.value);
     try {
-        let data = await fetch('http://localhost:8000/token', {
+        fetch('http://localhost:8000/token', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: formData
+        }).then(async (res) => {
+            let data = await res.json();
+            if (res.status === 200) {
+                store.commit('setToken', data.access_token);
+                router.replace('/main');
+            } else {
+                error.value = 'Error: ' + (Array.isArray(data.detail) ? data.detail[0].msg : data.detail);
+            }
         })
-        let result = await data.json();
-        console.log('res data', result);
-        router.push('/main');
-        router.replace('/main');
-    } catch(error) {
-        console.log('error', error)
+    } catch(err) {
+        console.error('error', err)
     }
 }
 
@@ -43,6 +52,7 @@ const onPasswordChange = (value: string) => {
                 <p class="h1">Welcome Back  👋</p>
                 <p class="plain-text">Today is a new day. It's your day. You shape it. 
                 Sign in to start managing your projects.</p>
+                <p v-if="error" class="error">{{ error }}</p>
             </div>
             <div class="content-div">
                 <InputText :label="'Email'" :input-type="'email'" :placeholder="'Example@email.com'" @onValueChange="onEmailChange" />

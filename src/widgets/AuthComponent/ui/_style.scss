@@ -149,3 +149,9 @@
     align-self: center;
     @include font-size-mix;
 }
+.error {
+    color: red;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+}

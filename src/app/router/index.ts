@@ -4,12 +4,20 @@ import LoginPage from "@/pages/LoginPage";
 import HomePage from "@/pages/HomePage";
 
 const routes = [
-    {path: '/', component: LoginPage},
-    {path: '/main', component: HomePage},
+    {
+        path: '/', 
+        name: 'login',
+        component: LoginPage
+    },
+    {
+        path: '/main', 
+        name: 'main',
+        component: HomePage
+    },
 ];
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createMemoryHistory('http://localhost:5173'),
     routes
 });
 

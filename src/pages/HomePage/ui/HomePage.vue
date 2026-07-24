@@ -4,7 +4,7 @@
     </div>
 </template>
 <script setup lang="ts">
-
+console.warn('on home page')
 </script>
 <style lang="scss" scoped>
     
